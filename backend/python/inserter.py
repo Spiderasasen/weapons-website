@@ -1,5 +1,7 @@
 import psycopg2 #if you see a red line, FUCKING IGNORE IT!!! It works on linux.
+import csv #importing the csv file now
 
+#establishes the connection
 def connect():
     with open("credentals.txt", "r") as f:
         lines = f.read().splitlines()
@@ -17,6 +19,7 @@ def connect():
         port = port
     )
 
+#main code
 def main():
     con = connect()
     cur = con.cursor()
