@@ -1,10 +1,10 @@
 -- drops any table
 drop table if exists Weapon_Years;
+drop table if exists Links;
 drop table if exists Main_Weapons;
 drop table if exists Weapon_Characteristics;
 drop table if exists Countries;
 drop table if exists Ammo;
-drop table if exists Links;
 
 -- creates the tables
 -- many to one (ex. many countries made a gun, but they made that model once)
