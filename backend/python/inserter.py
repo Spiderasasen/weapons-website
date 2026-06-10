@@ -19,6 +19,19 @@ def connect():
         port = port
     )
 
+"""
+GOAL:
+We need to make it possible where all my many to one tables dont have repeating names.
+
+IDEA:
+we can do a simple if statment that checks first if the name is there of the item.
+if so ignore it, else add it
+
+MORE COMPLEX BUT NEEDED:
+instead of type "is ____ in table ____" 9 million times,
+we instead make a global searcher (meaning we might also make a global inserter)
+"""
+
 #main code
 def main():
     con = connect()
