@@ -57,3 +57,11 @@ create table Links(
 	soruce_link text,
 	foreign key (weapon_id) references Main_Weapons(weapon_id)
 );
+
+-- selecting all info
+select * from ammo a;
+select * from countries c;
+select * from links l;
+select * from main_weapons mw;
+select * from weapon_characteristics wc;
+select * from weapon_years wy;
