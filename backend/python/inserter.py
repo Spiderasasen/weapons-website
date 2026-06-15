@@ -105,7 +105,22 @@ def main():
     cur = con.cursor()
 
     #main functions
-    print(con)
+    with open("Wepons_of_around_the_world-Weapons.csv", "r") as f:
+        reader = csv.DictReader(f)
+        for row in reader:
+            #many to one first
+            country_id = insert_or_not(cur, "Countries", "country_name", row["Country"])
+            ammo_id = insert_or_not(cur, "Ammo", "ammo_type", row["Ammo"])
+
+            #main table
+            weapon_id = insert_main_wepaon(cur, row, country_id, ammo_id)
+
+            #one to one tables
+            one_to_link(cur, row, weapon_id)
+            one_to_year(cur, row, weapon_id)
+
+            #checking if the item was scucessfully inserted into the database
+            print(f"inserted {row["Name"]} successfully")
 
     #closing the system
     cur.close()
