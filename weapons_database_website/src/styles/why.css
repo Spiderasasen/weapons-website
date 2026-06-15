@@ -1,0 +1,75 @@
+/* ====== WEAPONS SECTION (MILITARY ARCHIVE) ====== */
+#Weapons {
+    background: rgba(74, 95, 62, 0.15); /* olive tint */
+    border: 3px solid var(--military-green-dark);
+    padding: 30px;
+    margin-top: 40px;
+    border-radius: 6px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.4);
+}
+
+#Weapons h2 {
+    color: var(--sand-tan);
+    text-shadow: 1px 1px 0 var(--gunmetal);
+    margin-bottom: 15px;
+}
+
+#Weapons ul li {
+    margin-bottom: 12px;
+    padding-left: 10px;
+    border-left: 3px solid var(--military-green);
+}
+/* ====== FULL STACK SECTION (CYBER WARFARE) ====== */
+#full-stack {
+    background: linear-gradient(
+            to bottom right,
+            #0d0d0d,
+            #111,
+            #0f1a0f
+    );
+    border: 2px solid #0aff9d; /* neon green cyber glow */
+    padding: 30px;
+    margin-top: 40px;
+    border-radius: 6px;
+    box-shadow: 0 0 15px rgba(0, 255, 150, 0.25);
+    position: relative;
+    overflow: hidden;
+}
+
+/* subtle animated grid overlay */
+#full-stack::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background-image: linear-gradient(#0aff9d22 1px, transparent 1px),
+    linear-gradient(90deg, #0aff9d22 1px, transparent 1px);
+    background-size: 40px 40px;
+    pointer-events: none;
+    animation: cyberGrid 12s linear infinite;
+    opacity: 0.25;
+}
+
+@keyframes cyberGrid {
+    from { transform: translateY(0); }
+    to { transform: translateY(-40px); }
+}
+
+#full-stack h2 {
+    color: #0aff9d;
+    text-shadow: 0 0 8px #0aff9d;
+    margin-bottom: 15px;
+}
+
+#full-stack ul li {
+    margin-bottom: 15px;
+    padding-left: 10px;
+    border-left: 3px solid #0aff9d;
+}
+
+#full-stack ul li span {
+    display: block;
+    margin-top: 5px;
+    color: #9fffd9;
+    opacity: 0.85;
+}
+
