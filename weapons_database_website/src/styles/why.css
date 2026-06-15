@@ -1,3 +1,78 @@
+/* ====== WHY INTRO BLOCK ====== */
+.why-text {
+    background: rgba(74, 95, 62, 0.18); /* olive tint */
+    border: 3px solid var(--military-green-dark);
+    padding: 30px 35px;
+    margin: 40px auto;
+    max-width: 900px;
+    border-radius: 6px;
+    box-shadow: 0 0 12px rgba(0,0,0,0.4);
+    position: relative;
+}
+
+/* subtle top-left “folder tab” */
+.why-text::before {
+    content: "BRIEFING FILE";
+    position: absolute;
+    top: -18px;
+    left: 20px;
+    background: var(--military-green-dark);
+    color: var(--sand-tan);
+    padding: 4px 10px;
+    font-size: 0.75rem;
+    letter-spacing: 2px;
+    border-radius: 3px 3px 0 0;
+}
+
+/* title */
+.why-text h1 {
+    text-align: center;
+    margin-bottom: 20px;
+    text-shadow: 2px 2px 0 var(--gunmetal);
+}
+
+/* intro paragraph */
+.why-text p {
+    text-align: center;
+    margin-bottom: 20px;
+    font-size: 1.1rem;
+}
+
+/* list of choices */
+.why-text ol {
+    list-style: none;
+    padding: 0;
+    margin: 0 auto;
+    max-width: 500px;
+}
+
+.why-text ol li {
+    background: rgba(0,0,0,0.25);
+    border: 2px solid var(--military-green);
+    padding: 12px 15px;
+    margin-bottom: 15px;
+    border-radius: 4px;
+    text-align: center;
+    transition: 0.2s ease-in-out;
+}
+
+/* hover effect: like selecting a mission */
+.why-text ol li:hover {
+    background: rgba(0,0,0,0.4);
+    transform: translateY(-3px);
+    border-color: var(--sand-tan);
+}
+
+/* links */
+.why-text a {
+    color: var(--sand-tan);
+    text-decoration: none;
+    font-size: 1.1rem;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+}
+
+
 /* ====== WEAPONS SECTION (MILITARY ARCHIVE) ====== */
 #Weapons {
     background: rgba(74, 95, 62, 0.15); /* olive tint */

@@ -8,8 +8,8 @@ function Why() {
             <Header/>
 
             <main className="why">
-                <h1>Why I Created This?</h1>
                 <div className="why-text">
+                    <h1>Why I Created This?</h1>
                     <p>Well we got 2 options and it really depends on wht you want to think</p>
                     <ol>
                         <li><a href={"#Weapons"}>I really like Weapons</a></li>
