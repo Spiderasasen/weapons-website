@@ -1,0 +1,21 @@
+# virtual environment
+venv/
+
+# python cache
+__pycache__/
+*.pyc
+*.pyo
+
+# JetBrains IDE files
+.idea/
+
+# environment variables (IMPORTANT - hides your passwords)
+.env
+*.env
+
+# OS stuff
+.DS_Store
+Thumbs.db
+
+# for the credentals
+backend/python/credentals.txt
