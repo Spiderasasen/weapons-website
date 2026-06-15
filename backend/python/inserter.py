@@ -43,6 +43,35 @@ def insert_or_not(cur, table, column, value):
         cur.execute(f"insert into {table} ({column}) values (%s) returning id", (value,))
         return cur.fetchone()[0]
 
+
+#inserting into the main code
+def insert_main_wepaon(cur, row, country_id, ammo_id):
+    cur.execute("""
+        insert into Main_Weapons(
+            name,
+            description,
+            weapon_type,
+            weapon_subtype,
+            weapon_service,
+            weapon_status,
+            country_id,
+            ammo_id
+        ) VALUES (%s, %s, %s, %s, %s, %s, %s)
+    """),(
+        row["Name"],
+        row["Discription"],
+        row["Weapon Type"],
+        row["Wepon subtype"],
+        row["Weapon Service"],
+        country_id,
+        ammo_id
+    )
+    return cur.fetchone()[0]
+
+
+"""inserting into the one to one table"""
+#inserting into links
+
 #main code
 def main():
     #conecting to the data base
