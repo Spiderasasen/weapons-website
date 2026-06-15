@@ -1,6 +1,10 @@
+import Header from "../componets/Header.jsx"
+
 function Home() {
     return(
-        <h1>Home</h1>
+        <>
+            <Header/>
+        </>
     )
 }
 export default Home;
