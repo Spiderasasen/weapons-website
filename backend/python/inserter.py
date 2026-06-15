@@ -99,13 +99,10 @@ def one_to_year(cur, row, weapon_id):
         row["Years of Service"]
     ))
 
-#main code
-def main():
-    #conecting to the data base
-    con = connect()
-    cur = con.cursor()
-
-    #main functions
+"""making the main function code in a def
+    this code will only be used once
+"""
+def intro_code(cur):
     with open("Wepons_of_around_the_world-Weapons.csv", "r") as f:
         reader = csv.DictReader(f)
         for row in reader:
@@ -122,6 +119,15 @@ def main():
 
             #checking if the item was scucessfully inserted into the database
             print(f"inserted {row["Name"]} successfully")
+
+#main code
+def main():
+    #conecting to the data base
+    con = connect()
+    cur = con.cursor()
+
+    #main functions
+    intro_code(cur)
 
     #closing the system
     con.commit()
