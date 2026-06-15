@@ -71,6 +71,18 @@ def insert_main_wepaon(cur, row, country_id, ammo_id):
 
 """inserting into the one to one table"""
 #inserting into links
+def one_to_link(cur, row, wepaon_id):
+    cur.execute("""
+        insert into Links(
+            weapon_id,
+            image_link,
+            soruce_link
+        ) values (%s, %s, %s)
+    """), (
+        wepaon_id,
+        row["Image Link"],
+        row["Sources"]
+    )
 
 #main code
 def main():
