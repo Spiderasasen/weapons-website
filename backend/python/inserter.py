@@ -84,6 +84,20 @@ def one_to_link(cur, row, wepaon_id):
         row["Sources"]
     )
 
+#inserting the years of service
+def one_to_year(cur, row, weapon_id):
+    cur.execute("""
+        insert into Weapon_Years(
+            weapon_id,
+            year_of_creation,
+            years_of_service
+        ) values (%s, %s, %s)
+    """), (
+        weapon_id,
+        row["Year of Creation"],
+        row["Years of Service"]
+    )
+
 #main code
 def main():
     #conecting to the data base
