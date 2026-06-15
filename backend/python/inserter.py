@@ -31,12 +31,28 @@ MORE COMPLEX BUT NEEDED:
 instead of type "is ____ in table ____" 9 million times,
 we instead make a global searcher (meaning we might also make a global inserter)
 """
+def exist_in_table(cur, table, column, value):
+    cur.execute(f"select * from {table} where {column}=%s", (value,))
+    return cur.fetchone()
+
+def insert_or_not(cur, table, column, value):
+    result = exist_in_table(cur, table, column, value)
+    if result:
+        return result[0]
+    else:
+        cur.execute(f"insert into {table} ({column}) values (%s) returning id", (value,))
+        return cur.fetchone()[0]
 
 #main code
 def main():
+    #conecting to the data base
     con = connect()
     cur = con.cursor()
+
+    #main functions
     print(con)
+
+    #closing the system
     cur.close()
     con.close()
 
