@@ -3,6 +3,7 @@ package main
 import (
 	"bufio"
 	"database/sql"
+	"encoding/json"
 	"fmt"
 	"log"
 	"net/http"
@@ -12,6 +13,19 @@ import (
 )
 
 var db *sql.DB
+
+// making the weapons structure
+type Weapon struct {
+	WeaponID      int    `json:"weapon_id"`
+	Name          string `json:"name"`
+	Description   string `json:"description"`
+	WeaponType    string `json:"weapon_type"`
+	WeaponSubtype string `json:"weapon_subtype"`
+	WeaponService string `json:"weapon_service"`
+	WeaponStatus  string `json:"weapon_status"`
+	Country       string `json:"country"`
+	AmmoType      string `json:"ammo_type"`
+}
 
 // connecting to the database
 func connection() *sql.DB {
@@ -56,7 +70,51 @@ func connection() *sql.DB {
 }
 
 func getWeapons(w http.ResponseWriter, r *http.Request) {
-	fmt.Fprintf(w, "weapons endpoint coming soon!")
+	//bascally praying that i didnt mispell anything
+	rows, err := db.Query(`
+		select
+			mw.weapon_id,
+			mw.name,
+			mw.description,
+			mw.weapon_type,
+			mw.weapon_subtype,
+			mw.weapon_service,
+			mw.weapon_status,
+			c.country_name,
+			a.ammo_type
+		from Main_Weapons mw
+		left join Countries c on mw.country_id = c.country_id
+		left join Ammo a on mw.ammo_id = a.ammo_id
+	`)
+	//if i missed spell something, it will yell at me
+	if err != nil {
+		log.Fatal(err)
+	}
+	defer rows.Close()
+
+	weapons := []Weapon{}
+
+	//inserting all the info into the type struct
+	for rows.Next() {
+		var w Weapon
+		rows.Scan(
+			&w.WeaponID,
+			&w.Name,
+			&w.Description,
+			&w.WeaponType,
+			&w.WeaponSubtype,
+			&w.WeaponService,
+			&w.WeaponStatus,
+			&w.Country,
+			&w.AmmoType,
+		)
+		weapons = append(weapons, w)
+	}
+
+	//converts to json
+	w.Header().Set("Content-Type", "spplication/json")
+	json.NewEncoder(w).Encode(weapons)
+
 }
 
 func main() {
