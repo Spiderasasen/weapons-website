@@ -1,6 +1,15 @@
 import "../styles/weapons_Card.css"
 
 function Weapons_Card({weapons}) {
+    const handleImageLoad = (e) => {
+        const img = e.target;
+        if (img.naturalHeight > img.naturalWidth) {
+            img.classList.add("portrait");
+        } else {
+            img.classList.add("landscape");
+        }
+    };
+
     return(
         <div className="weapons-grid">
             {weapons.map(weapon => (
@@ -14,8 +23,8 @@ function Weapons_Card({weapons}) {
                     <p><em>Years in Service: {weapon.years_of_service}</em></p>
                     <p>{weapon.description}</p>
                     <a id="Weapon_link" href={weapon.source_link}>Source located here</a>
-                    <div className="image-wrapper">
-                        <img src={weapon.image_link} alt={"image of " + weapon.name} />
+                    <div className="weapon-img-wrapper">
+                        <img src={weapon.image_link} alt={"image of " + weapon.name} onLoad={handleImageLoad}/>
                     </div>
                 </div>
             ))}
