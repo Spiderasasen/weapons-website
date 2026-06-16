@@ -9,7 +9,7 @@ function Header() {
             <nav>
                 <ul>
                     <li id={"home"} onClick={() => navigate("/")}>Home</li>
-                    <li id={"weapons"}>Weapons</li>
+                    <li id={"weapons"} onClick={() => navigate("/weapons")}>Weapons</li>
                     <li id={"add-weapon"}>Add A Weapon</li>
                     <li id={"why"} onClick={() => navigate("/why")}>Why I Created This?</li>
                 </ul>
