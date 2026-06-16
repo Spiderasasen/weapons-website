@@ -117,13 +117,23 @@ func getWeapons(w http.ResponseWriter, r *http.Request) {
 
 }
 
+// saftey clearance for react
+func corsMiddleware(next http.HandlerFunc) http.HandlerFunc {
+	return func(w http.ResponseWriter, r *http.Request) {
+		w.Header().Set("Access-Control-Allow-Origin", "*")
+		w.Header().Set("Access-Control-Allow-Methods", "POST, GET, OPTIONS")
+		w.Header().Set("Access-Control-Allow-Headers", "Content-Type")
+		next(w, r)
+	}
+}
+
 func main() {
 	//connecting to the database
 	db = connection()
 	defer db.Close()
 
 	//route
-	http.HandleFunc("/weapons", getWeapons)
+	http.HandleFunc("/weapons", corsMiddleware(getWeapons))
 	fmt.Println("Listening on port 8080")
 	log.Fatal(http.ListenAndServe(":8080", nil))
 }
