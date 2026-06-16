@@ -30,3 +30,11 @@ That's it.
 Now yes, I still need to incorporate Go into the database. This will be the main why stuff will be displayed
 Design is not my forte, so I'll be using Copilot to help me out.
 Other than that Claude has helped me out on getting back to full stack development.
+
+# Go
+we want to show all the information in our database to the website page.
+We could use python, but since python is so slow to getting the information, what can we do?
+simple we use go.
+But will that hurt the code we have?
+NO, in fact this is quite normal beacuse SQL doesn't care who it gets all the data, so any langague can grab the data.
+That and Go is complied and not interpurted as Pyton, meaning it's faster to grab the info.
