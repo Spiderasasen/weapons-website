@@ -35,7 +35,11 @@ function Weapons() {
                             <p><strong>Subtype:</strong> {weapon.weapon_subtype}</p>
                             <p><strong>Country:</strong> {weapon.country}</p>
                             <p><strong>Service:</strong> {weapon.weapon_service}</p>
+                            <p><em>Created: {weapon.year_of_creation}</em></p>
+                            <p><em>Years in Service: {weapon.years_of_service}</em></p>
                             <p>{weapon.description}</p>
+                            <a href={weapon.source_link}>Source located here</a>
+                            <img src={weapon.image_link} alt={"image of " + weapon.name}/>
                         </div>
                     ))}
                 </div>
