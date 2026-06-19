@@ -16,19 +16,19 @@ var db *sql.DB
 
 // making the weapons structure
 type Weapon struct {
-    WeaponID      int    `json:"weapon_id"`
-    Name          string `json:"name"`
-    Description   string `json:"description"`
-    WeaponType    string `json:"weapon_type"`
-    WeaponSubtype string `json:"weapon_subtype"`
-    WeaponService string `json:"weapon_service"`
-    WeaponStatus  string `json:"weapon_status"`
-    Country       string `json:"country"`
-    AmmoType      string `json:"ammo_type"`
-    YearCreated   string `json:"year_of_creation"`
-    YearsService  string `json:"years_of_service"`
-    ImageLink     string `json:"image_link"`
-    SourceLink    string `json:"source_link"`
+	WeaponID      int    `json:"weapon_id"`
+	Name          string `json:"name"`
+	Description   string `json:"description"`
+	WeaponType    string `json:"weapon_type"`
+	WeaponSubtype string `json:"weapon_subtype"`
+	WeaponService string `json:"weapon_service"`
+	WeaponStatus  string `json:"weapon_status"`
+	Country       string `json:"country"`
+	AmmoType      string `json:"ammo_type"`
+	YearCreated   string `json:"year_of_creation"`
+	YearsService  string `json:"years_of_service"`
+	ImageLink     string `json:"image_link"`
+	SourceLink    string `json:"source_link"`
 }
 
 // connecting to the database
@@ -108,23 +108,23 @@ func getWeapons(w http.ResponseWriter, r *http.Request) {
 	for rows.Next() {
 		var w Weapon
 		err := rows.Scan(
-            &w.WeaponID,
-            &w.Name,
-            &w.Description,
-            &w.WeaponType,
-            &w.WeaponSubtype,
-            &w.WeaponService,
-            &w.WeaponStatus,
-            &w.Country,
-            &w.AmmoType,
-            &w.YearCreated,
-            &w.YearsService,
-            &w.ImageLink,
-            &w.SourceLink,
-        )
-        if err != nil{
-            log.Println("Scan Error:", err)
-        }
+			&w.WeaponID,
+			&w.Name,
+			&w.Description,
+			&w.WeaponType,
+			&w.WeaponSubtype,
+			&w.WeaponService,
+			&w.WeaponStatus,
+			&w.Country,
+			&w.AmmoType,
+			&w.YearCreated,
+			&w.YearsService,
+			&w.ImageLink,
+			&w.SourceLink,
+		)
+		if err != nil {
+			log.Println("Scan Error:", err)
+		}
 		weapons = append(weapons, w)
 	}
 
@@ -151,6 +151,7 @@ func main() {
 
 	//route
 	http.HandleFunc("/weapons", corsMiddleware(getWeapons))
+	http.HandleFunc("/addedWeapons", corsMiddleware(getWeapons))
 	fmt.Println("Listening on port 8080")
 	log.Fatal(http.ListenAndServe(":8080", nil))
 }
